@@ -1,1 +1,16 @@
-<p>artwork-item works!</p>
+<nx-card class="card-wrapper">
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/3/32/Art_Institute_of_Chicago_logo.svg"
+  />
+  <h4
+    nxHeadline="subsection-xsmall"
+    class="nx-font-weight-semibold nx-margin-top-xs"
+  >
+    {{ artwork?.title }}
+  </h4>
+  <p class="artist nx-font-weight-semibold nx-margin-top-xs">
+    {{ artwork?.artist_title }}
+  </p>
+  <p class="content">{{ getCreationLocationAndPeriod() }}</p>
+  <p class="content">{{ artwork?.medium_display }}</p>
+</nx-card>

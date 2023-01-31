@@ -1,13 +1,16 @@
 <div nxLayout="grid">
   <div nxRow>
     <div nxCol="12, 12, 6">
-      <nx-formfield nxLabel="Style">
-        <nx-multi-select [options]="options"></nx-multi-select>
+      <nx-formfield nxLabel="Filter:" nxFloatLabel="always">
+        <nx-multi-select
+          [options]="options"
+          placeholder="Style"
+        ></nx-multi-select>
       </nx-formfield>
     </div>
 
     <div nxCol="12, 12, 6">
-      <nx-formfield nxLabel="Sort by">
+      <nx-formfield nxLabel="Sort by:" nxFloatLabel="always">
         <nx-dropdown [nxValueFormatter]="toText">
           <nx-dropdown-item
             *ngFor="let sortBy of sortOptions"

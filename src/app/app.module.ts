@@ -20,6 +20,7 @@ import { NxModalModule } from '@aposin/ng-aquila/modal';
 import { NxOverlayModule } from '@aposin/ng-aquila/overlay';
 import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 import { NxPaginationModule } from '@aposin/ng-aquila/pagination';
+import { NxCardModule } from '@aposin/ng-aquila/card';
 
 import { AppComponent } from './app.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
@@ -29,7 +30,14 @@ import { ArtworksComponent } from './components/artworks/artworks.component';
 import { ArtworkItemComponent } from './components/artwork-item/artwork-item.component';
 
 @NgModule({
-  declarations: [AppComponent, PaginationComponent, HeaderComponent, FilterComponent, ArtworksComponent, ArtworkItemComponent],
+  declarations: [
+    AppComponent,
+    PaginationComponent,
+    HeaderComponent,
+    FilterComponent,
+    ArtworksComponent,
+    ArtworkItemComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -54,6 +62,7 @@ import { ArtworkItemComponent } from './components/artwork-item/artwork-item.com
     NxOverlayModule,
     NxPopoverModule,
     NxPaginationModule,
+    NxCardModule,
   ],
   bootstrap: [AppComponent],
 })
