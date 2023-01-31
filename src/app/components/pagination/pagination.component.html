@@ -1,11 +1,11 @@
 <div class="pagination-wrapper">
   <nx-pagination
-    [nxCount]="count"
-    [nxPage]="page"
+    [nxCount]="(count$ | async) || 0"
+    [nxPage]="(page$ | async) || 1"
     [nxPerPage]="perPage"
     nxType="advanced"
-    (nxGoPrev)="prevPage()"
-    (nxGoNext)="nextPage()"
+    (nxGoPrev)="goPrevPage()"
+    (nxGoNext)="goNextPage()"
     (nxGoPage)="goToPage($event)"
   >
   </nx-pagination>

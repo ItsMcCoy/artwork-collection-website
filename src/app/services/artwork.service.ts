@@ -12,10 +12,8 @@ export class ArtworkService {
 
   constructor(private http: HttpClient) {}
 
-  getArtworks(page: number): Observable<ArtworkResponse> {
-    const httpParams = new HttpParams()
-      .set('limit', this.limit)
-      .set('page', page);
+  getArtworks(): Observable<ArtworkResponse> {
+    const httpParams = new HttpParams().set('limit', this.limit).set('page', 1);
 
     return this.http.get<ArtworkResponse>(this.apiUrl, { params: httpParams });
   }

@@ -1,4 +1,12 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { AppState } from 'src/app/state/app.state';
+import {
+  totalSelector,
+  pageSelector,
+} from 'src/app/state/artworks/artwork.selectors';
+import { nextPage, prevPage } from 'src/app/state/artworks/artwork.actions';
 
 @Component({
   selector: 'app-pagination',
@@ -6,19 +14,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./pagination.component.scss'],
 })
 export class PaginationComponent {
-  count = 80;
-  page = 1;
-  perPage = 8;
+  readonly perPage = 8;
+  count$: Observable<number>;
+  page$: Observable<number>;
 
-  prevPage() {
-    this.page--;
+  constructor(private store: Store<AppState>) {
+    this.count$ = this.store.pipe(select(totalSelector));
+    this.page$ = this.store.pipe(select(pageSelector));
   }
 
-  nextPage() {
-    this.page++;
+  goPrevPage() {
+    this.store.dispatch(prevPage());
+  }
+
+  goNextPage() {
+    this.store.dispatch(nextPage());
   }
 
   goToPage(n: number) {
-    this.page = n;
+    // this.page = n;
   }
 }

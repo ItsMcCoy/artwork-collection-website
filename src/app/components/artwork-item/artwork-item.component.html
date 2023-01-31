@@ -1,6 +1,7 @@
 <nx-card class="card-wrapper">
   <img
-    src="https://upload.wikimedia.org/wikipedia/commons/3/32/Art_Institute_of_Chicago_logo.svg"
+    [src]="getImgSrc()"
+    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/3/32/Art_Institute_of_Chicago_logo.svg'"
   />
   <h4
     nxHeadline="subsection-xsmall"

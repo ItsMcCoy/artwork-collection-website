@@ -1,5 +1,5 @@
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,6 +28,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { ArtworksComponent } from './components/artworks/artworks.component';
 import { ArtworkItemComponent } from './components/artwork-item/artwork-item.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { artworkReducer } from './state/artworks/artwork.reducer';
+import { ArtworksEffects } from './state/artworks/artwork.effects';
 
 @NgModule({
   declarations: [
@@ -63,6 +68,9 @@ import { ArtworkItemComponent } from './components/artwork-item/artwork-item.com
     NxPopoverModule,
     NxPaginationModule,
     NxCardModule,
+    StoreModule.forRoot({ artworks: artworkReducer }),
+    EffectsModule.forRoot([ArtworksEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   bootstrap: [AppComponent],
 })

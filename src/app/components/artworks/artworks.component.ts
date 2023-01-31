@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { Artwork } from 'src/app/models';
-import { ArtworkService } from 'src/app/services/artwork.service';
+import { AppState } from 'src/app/state/app.state';
+import {
+  artworksSelector,
+  baseImageUrlSelector,
+} from 'src/app/state/artworks/artwork.selectors';
+import { loadArtworks } from 'src/app/state/artworks/artwork.actions';
 
 @Component({
   selector: 'app-artworks',
@@ -8,14 +15,15 @@ import { ArtworkService } from 'src/app/services/artwork.service';
   styleUrls: ['./artworks.component.scss'],
 })
 export class ArtworksComponent implements OnInit {
-  artworks: Artwork[] = [];
+  artworks$: Observable<Artwork[]>;
+  baseImageUrl$: Observable<string>;
 
-  constructor(private artworkService: ArtworkService) {}
+  constructor(private store: Store<AppState>) {
+    this.artworks$ = this.store.pipe(select(artworksSelector));
+    this.baseImageUrl$ = this.store.pipe(select(baseImageUrlSelector));
+  }
 
   ngOnInit(): void {
-    this.artworkService.getArtworks(1).subscribe((response) => {
-      console.log(response.data);
-      this.artworks = response.data;
-    });
+    this.store.dispatch(loadArtworks());
   }
 }

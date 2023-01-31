@@ -1,5 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { Observable, map } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { AppState } from 'src/app/state/app.state';
 import { Artwork } from 'src/app/models';
+import { baseImageUrlSelector } from 'src/app/state/artworks/artwork.selectors';
 
 @Component({
   selector: 'app-artwork-item',
@@ -8,6 +12,7 @@ import { Artwork } from 'src/app/models';
 })
 export class ArtworkItemComponent {
   @Input() artwork?: Artwork;
+  @Input() baseImageUrl: string | null = null;
 
   getCreationLocationAndPeriod(): string {
     const originalLocation = this?.artwork?.place_of_origin;
@@ -24,5 +29,11 @@ export class ArtworkItemComponent {
     } else {
       return `${originalLocation}`;
     }
+  }
+
+  getImgSrc(): string {
+    const imgId = this.artwork?.image_id;
+    const baseUrl = this.baseImageUrl || '';
+    return `${baseUrl}/${imgId}/full/843,/0/default.jpg`;
   }
 }

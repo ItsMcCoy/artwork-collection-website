@@ -1,7 +1,10 @@
 <div nxLayout="grid">
   <div nxRow class="artworks-container">
-    <div *ngFor="let artwork of artworks" nxCol="12, 6, 6, 3 ">
-      <app-artwork-item [artwork]="artwork"></app-artwork-item>
+    <div *ngFor="let artwork of artworks$ | async" nxCol="12, 6, 6, 3 ">
+      <app-artwork-item
+        [artwork]="artwork"
+        [baseImageUrl]="baseImageUrl$ | async"
+      ></app-artwork-item>
     </div>
   </div>
 </div>
