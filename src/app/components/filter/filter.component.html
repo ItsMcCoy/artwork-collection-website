@@ -1,0 +1,20 @@
+<div nxLayout="grid">
+  <div nxRow>
+    <div nxCol="12, 12, 6">
+      <nx-formfield nxLabel="Style">
+        <nx-multi-select [options]="options"></nx-multi-select>
+      </nx-formfield>
+    </div>
+
+    <div nxCol="12, 12, 6">
+      <nx-formfield nxLabel="Sort by">
+        <nx-dropdown [nxValueFormatter]="toText">
+          <nx-dropdown-item
+            *ngFor="let sortBy of sortOptions"
+            [nxValue]="sortBy"
+          ></nx-dropdown-item>
+        </nx-dropdown>
+      </nx-formfield>
+    </div>
+  </div>
+</div>
