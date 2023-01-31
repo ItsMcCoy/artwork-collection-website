@@ -26,4 +26,8 @@ export class ArtworksComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(loadArtworks());
   }
+
+  trackByFn(index: number, item: Artwork) {
+    return `${index}-${item.id}`;
+  }
 }

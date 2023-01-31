@@ -1,8 +1,10 @@
 <nx-card class="card-wrapper">
-  <img
-    [src]="getImgSrc()"
-    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/3/32/Art_Institute_of_Chicago_logo.svg'"
-  />
+  <div class="img-wrapper">
+    <img
+      [src]="getImgSrc()"
+      onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/3/32/Art_Institute_of_Chicago_logo.svg'"
+    />
+  </div>
   <h4
     nxHeadline="subsection-xsmall"
     class="nx-font-weight-semibold nx-margin-top-xs"

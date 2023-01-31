@@ -1,9 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Observable, map } from 'rxjs';
-import { select, Store } from '@ngrx/store';
-import { AppState } from 'src/app/state/app.state';
 import { Artwork } from 'src/app/models';
-import { baseImageUrlSelector } from 'src/app/state/artworks/artwork.selectors';
 
 @Component({
   selector: 'app-artwork-item',

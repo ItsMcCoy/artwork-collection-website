@@ -21,6 +21,7 @@ import { NxOverlayModule } from '@aposin/ng-aquila/overlay';
 import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 import { NxPaginationModule } from '@aposin/ng-aquila/pagination';
 import { NxCardModule } from '@aposin/ng-aquila/card';
+import { NxSpinnerModule } from '@aposin/ng-aquila/spinner';
 
 import { AppComponent } from './app.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
@@ -33,6 +34,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { artworkReducer } from './state/artworks/artwork.reducer';
 import { ArtworksEffects } from './state/artworks/artwork.effects';
+import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { ArtworksEffects } from './state/artworks/artwork.effects';
     FilterComponent,
     ArtworksComponent,
     ArtworkItemComponent,
+    LoadingScreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +71,7 @@ import { ArtworksEffects } from './state/artworks/artwork.effects';
     NxPopoverModule,
     NxPaginationModule,
     NxCardModule,
+    NxSpinnerModule,
     StoreModule.forRoot({ artworks: artworkReducer }),
     EffectsModule.forRoot([ArtworksEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),

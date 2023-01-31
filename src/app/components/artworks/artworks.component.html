@@ -1,6 +1,9 @@
 <div nxLayout="grid">
   <div nxRow class="artworks-container">
-    <div *ngFor="let artwork of artworks$ | async" nxCol="12, 6, 6, 3 ">
+    <div
+      *ngFor="let artwork of artworks$ | async; trackBy: trackByFn"
+      nxCol="12, 6, 6, 3 "
+    >
       <app-artwork-item
         [artwork]="artwork"
         [baseImageUrl]="baseImageUrl$ | async"

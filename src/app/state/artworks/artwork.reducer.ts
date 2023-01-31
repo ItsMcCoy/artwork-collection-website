@@ -29,7 +29,7 @@ export const initialState: ArtworkState = {
 
 export const artworkReducer = createReducer(
   initialState,
-  on(loadArtworks, (state) => ({ ...state, isLoading: true })),
+  on(loadArtworks, (state) => ({ ...state, isLoading: true, artworks: [] })),
   on(loadArtworksSuccess, (state, { artworks, total, baseUrl }) => ({
     ...state,
     artworks: artworks,

@@ -6,7 +6,11 @@ import {
   totalSelector,
   pageSelector,
 } from 'src/app/state/artworks/artwork.selectors';
-import { nextPage, prevPage } from 'src/app/state/artworks/artwork.actions';
+import {
+  nextPage,
+  prevPage,
+  goToPage,
+} from 'src/app/state/artworks/artwork.actions';
 
 @Component({
   selector: 'app-pagination',
@@ -31,7 +35,7 @@ export class PaginationComponent {
     this.store.dispatch(nextPage());
   }
 
-  goToPage(n: number) {
-    // this.page = n;
+  goPage(n: number) {
+    this.store.dispatch(goToPage({ page: n }));
   }
 }
