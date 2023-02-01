@@ -35,6 +35,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { artworkReducer } from './state/artworks/artwork.reducer';
 import { ArtworksEffects } from './state/artworks/artwork.effects';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
+import { ActionPanelComponent } from './components/action-panel/action-panel.component';
+import { SortFieldComponent } from './components/sort-field/sort-field.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
     ArtworksComponent,
     ArtworkItemComponent,
     LoadingScreenComponent,
+    ActionPanelComponent,
+    SortFieldComponent,
   ],
   imports: [
     BrowserModule,

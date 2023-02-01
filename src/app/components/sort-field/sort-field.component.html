@@ -1,0 +1,8 @@
+<nx-formfield nxLabel="Sort by:" nxFloatLabel="always">
+  <nx-dropdown [nxValueFormatter]="toText">
+    <nx-dropdown-item
+      *ngFor="let sortBy of sortOptions"
+      [nxValue]="sortBy"
+    ></nx-dropdown-item>
+  </nx-dropdown>
+</nx-formfield>

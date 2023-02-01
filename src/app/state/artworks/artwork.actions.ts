@@ -21,3 +21,8 @@ export const goToPage = createAction(
   '[Pagination] Go To Page',
   props<{ page: number }>()
 );
+
+export const setFilters = createAction(
+  '[Filters] Set Filters',
+  props<{ filters: string[] }>()
+);

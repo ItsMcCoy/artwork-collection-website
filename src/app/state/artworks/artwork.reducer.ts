@@ -7,6 +7,7 @@ import {
   nextPage,
   prevPage,
   goToPage,
+  setFilters,
 } from './artwork.actions';
 
 export interface ArtworkState {
@@ -15,6 +16,7 @@ export interface ArtworkState {
   artworks: Artwork[];
   page: number;
   total: number;
+  filters: string[];
   baseImageUrl: string;
 }
 
@@ -24,12 +26,18 @@ export const initialState: ArtworkState = {
   artworks: [],
   page: 1,
   total: 0,
+  filters: [],
   baseImageUrl: '',
 };
 
 export const artworkReducer = createReducer(
   initialState,
-  on(loadArtworks, (state) => ({ ...state, isLoading: true, artworks: [] })),
+  on(loadArtworks, (state) => ({
+    ...state,
+    isLoading: true,
+    artworks: [],
+    filters: [],
+  })),
   on(loadArtworksSuccess, (state, { artworks, total, baseUrl }) => ({
     ...state,
     artworks: artworks,
@@ -46,5 +54,6 @@ export const artworkReducer = createReducer(
   })),
   on(nextPage, (state) => ({ ...state, page: state.page + 1 })),
   on(prevPage, (state) => ({ ...state, page: state.page - 1 })),
-  on(goToPage, (state, { page }) => ({ ...state, page: page }))
+  on(goToPage, (state, { page }) => ({ ...state, page: page })),
+  on(setFilters, (state, { filters }) => ({ ...state, filters: filters }))
 );

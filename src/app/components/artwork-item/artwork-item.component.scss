@@ -8,13 +8,19 @@ p {
   // display: flex;
   // justify-content: center;
   // align-items: center;
+  position: relative;
 
   img {
     max-width: 100%;
-    max-height: 100%;
     height: auto;
   }
 }
+
+// .img-wrapper::before {
+//   content: "";
+//   display: block;
+//   padding-top: 100%;
+// }
 
 .artist {
   font-size: 14px;
