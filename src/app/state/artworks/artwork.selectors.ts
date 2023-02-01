@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
 import { AppState } from '../app.state';
-import { ArtworkState } from './artwork.reducer';
+import { SortOption } from 'src/app/models';
 
 export const selectArtworks = (state: AppState) => state.artworks;
 
@@ -34,6 +34,11 @@ export const filtersSelector = createSelector(
   (state) => state.filters
 );
 
+export const sortBySelector = createSelector(
+  selectArtworks,
+  (state) => state.sortBy
+);
+
 export const filterOptionsSelector = createSelector(
   artworksSelector,
   (artworks) => {
@@ -64,5 +69,58 @@ export const filteredArtworksSelector = createSelector(
     return artworks.filter((artwork) => {
       return artwork.style_titles.some((style) => filters.includes(style));
     });
+  }
+);
+
+export const sortedArtworksSelector = createSelector(
+  filteredArtworksSelector,
+  sortBySelector,
+  (artworks, sortBy) => {
+    if (!sortBy) {
+      return artworks;
+    }
+    switch (sortBy) {
+      case SortOption.Artist:
+        return [...artworks].sort((a, b) => {
+          if (a.artist_title === null) {
+            return 1;
+          }
+          if (b.artist_title === null) {
+            return -1;
+          }
+          if (a.artist_title === b.artist_title) {
+            return 0;
+          }
+          return a.artist_title < b.artist_title ? -1 : 1;
+        });
+      case SortOption.Name:
+        return [...artworks].sort((a, b) => {
+          if (a.title === null) {
+            return 1;
+          }
+          if (b.title === null) {
+            return -1;
+          }
+          if (a.title === b.title) {
+            return 0;
+          }
+          return a.title < b.title ? -1 : 1;
+        });
+      case SortOption.Date:
+        return [...artworks].sort((a, b) => {
+          if (a.date_start === null) {
+            return 1;
+          }
+          if (b.date_start === null) {
+            return -1;
+          }
+          if (a.date_start === b.date_start) {
+            return 0;
+          }
+          return a.date_start < b.date_start ? -1 : 1;
+        });
+      default:
+        return artworks;
+    }
   }
 );

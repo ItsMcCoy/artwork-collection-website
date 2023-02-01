@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { Artwork } from 'src/app/models';
+import { Artwork, SortBy } from 'src/app/models';
 import {
   loadArtworks,
   loadArtworksSuccess,
@@ -8,6 +8,7 @@ import {
   prevPage,
   goToPage,
   setFilters,
+  setSortBy,
 } from './artwork.actions';
 
 export interface ArtworkState {
@@ -17,6 +18,7 @@ export interface ArtworkState {
   page: number;
   total: number;
   filters: string[];
+  sortBy: SortBy;
   baseImageUrl: string;
 }
 
@@ -27,6 +29,7 @@ export const initialState: ArtworkState = {
   page: 1,
   total: 0,
   filters: [],
+  sortBy: null,
   baseImageUrl: '',
 };
 
@@ -55,5 +58,6 @@ export const artworkReducer = createReducer(
   on(nextPage, (state) => ({ ...state, page: state.page + 1 })),
   on(prevPage, (state) => ({ ...state, page: state.page - 1 })),
   on(goToPage, (state, { page }) => ({ ...state, page: page })),
-  on(setFilters, (state, { filters }) => ({ ...state, filters: filters }))
+  on(setFilters, (state, { filters }) => ({ ...state, filters: filters })),
+  on(setSortBy, (state, { option }) => ({ ...state, sortBy: option }))
 );

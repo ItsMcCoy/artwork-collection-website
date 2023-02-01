@@ -1,7 +1,11 @@
 <nx-formfield nxLabel="Sort by:" nxFloatLabel="always">
-  <nx-dropdown [nxValueFormatter]="toText">
+  <nx-dropdown
+    placeholder="Recommended"
+    (selectionChange)="handleChange($event)"
+    [(ngModel)]="model"
+  >
     <nx-dropdown-item
-      *ngFor="let sortBy of sortOptions"
+      *ngFor="let sortBy of options"
       [nxValue]="sortBy"
     ></nx-dropdown-item>
   </nx-dropdown>
