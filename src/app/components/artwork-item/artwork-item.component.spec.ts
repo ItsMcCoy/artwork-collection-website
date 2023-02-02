@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NxCardModule } from '@aposin/ng-aquila/card';
 
 import { ArtworkItemComponent } from './artwork-item.component';
 
@@ -8,9 +9,9 @@ describe('ArtworkItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ArtworkItemComponent ]
-    })
-    .compileComponents();
+      imports: [NxCardModule],
+      declarations: [ArtworkItemComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ArtworkItemComponent);
     component = fixture.componentInstance;

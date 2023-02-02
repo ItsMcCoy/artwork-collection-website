@@ -56,7 +56,10 @@ export const artworkReducer = createReducer(
     isLoading: false,
   })),
   on(nextPage, (state) => ({ ...state, page: state.page + 1 })),
-  on(prevPage, (state) => ({ ...state, page: state.page - 1 })),
+  on(prevPage, (state) => ({
+    ...state,
+    page: state.page > 1 ? state.page - 1 : 1,
+  })),
   on(goToPage, (state, { page }) => ({ ...state, page: page })),
   on(setFilters, (state, { filters }) => ({ ...state, filters: filters })),
   on(setSortBy, (state, { option }) => ({ ...state, sortBy: option }))

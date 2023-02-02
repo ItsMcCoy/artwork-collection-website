@@ -39,6 +39,7 @@ export const sortBySelector = createSelector(
   (state) => state.sortBy
 );
 
+// create array of FilterOption based on current artworks state
 export const filterOptionsSelector = createSelector(
   artworksSelector,
   (artworks) => {
@@ -59,6 +60,7 @@ export const filterOptionsSelector = createSelector(
   }
 );
 
+// filter current artworks by style based on current filters state
 export const filteredArtworksSelector = createSelector(
   artworksSelector,
   filtersSelector,
@@ -72,6 +74,7 @@ export const filteredArtworksSelector = createSelector(
   }
 );
 
+// get sorted and filtered artworks based on sortBy
 export const sortedArtworksSelector = createSelector(
   filteredArtworksSelector,
   sortBySelector,
