@@ -1,5 +1,5 @@
 import { Artwork } from './artwork.model';
-import { Pagination } from './pagination';
+import { Pagination } from './pagination.model';
 
 export interface ArtworkResponse {
   pagination: Pagination;

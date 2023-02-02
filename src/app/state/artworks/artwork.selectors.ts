@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
 import { AppState } from '../app.state';
-import { SortOption } from 'src/app/models';
+import { SortField } from 'src/app/models';
 
 export const selectArtworks = (state: AppState) => state.artworks;
 
@@ -80,7 +80,7 @@ export const sortedArtworksSelector = createSelector(
       return artworks;
     }
     switch (sortBy) {
-      case SortOption.Artist:
+      case SortField.Artist:
         return [...artworks].sort((a, b) => {
           if (a.artist_title === null) {
             return 1;
@@ -93,7 +93,7 @@ export const sortedArtworksSelector = createSelector(
           }
           return a.artist_title < b.artist_title ? -1 : 1;
         });
-      case SortOption.Name:
+      case SortField.Name:
         return [...artworks].sort((a, b) => {
           if (a.title === null) {
             return 1;
@@ -106,7 +106,7 @@ export const sortedArtworksSelector = createSelector(
           }
           return a.title < b.title ? -1 : 1;
         });
-      case SortOption.Date:
+      case SortField.Date:
         return [...artworks].sort((a, b) => {
           if (a.date_start === null) {
             return 1;

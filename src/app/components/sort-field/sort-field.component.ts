@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/state/app.state';
 import { NxDropdownSelectChange } from '@aposin/ng-aquila/dropdown';
-import { sortOptions, SortOption, SortBy } from 'src/app/models';
+import { sortByOptions, SortField, SortBy } from 'src/app/models';
 import { sortBySelector } from 'src/app/state/artworks/artwork.selectors';
 import { setSortBy } from 'src/app/state/artworks/artwork.actions';
 
@@ -12,7 +12,7 @@ import { setSortBy } from 'src/app/state/artworks/artwork.actions';
   styleUrls: ['./sort-field.component.scss'],
 })
 export class SortFieldComponent {
-  options: SortOption[] = sortOptions;
+  options: SortField[] = sortByOptions;
   model: SortBy = null;
 
   constructor(private store: Store<AppState>) {

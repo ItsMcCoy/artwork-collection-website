@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Artwork, SortOption } from 'src/app/models';
+import { Artwork, SortField } from 'src/app/models';
 
 export const loadArtworks = createAction('[Artworks API] Load Artworks');
 
@@ -29,5 +29,5 @@ export const setFilters = createAction(
 
 export const setSortBy = createAction(
   '[Sort By] Set Sort By',
-  props<{ option: SortOption }>()
+  props<{ option: SortField }>()
 );
