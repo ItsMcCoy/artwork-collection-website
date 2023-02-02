@@ -10,11 +10,11 @@ import {
 import { setFilters } from 'src/app/state/artworks/artwork.actions';
 
 @Component({
-  selector: 'app-filter',
-  templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.scss'],
+  selector: 'app-style-filter',
+  templateUrl: './style-filter.component.html',
+  styleUrls: ['./style-filter.component.scss'],
 })
-export class FilterComponent {
+export class StyleFilterComponent {
   filters$: Observable<FilterOption[]>;
   model: string[] = [];
 
