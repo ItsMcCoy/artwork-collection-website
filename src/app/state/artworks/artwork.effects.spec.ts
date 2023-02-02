@@ -6,7 +6,13 @@ import { ArtworksEffects } from './artwork.effects';
 import * as artworkReducer from './artwork.reducer';
 import { ArtworkService } from 'src/app/services/artwork.service';
 import { TestScheduler } from 'rxjs/testing';
-import { loadArtworks, loadArtworksSuccess } from './artwork.actions';
+import {
+  goToPage,
+  loadArtworks,
+  loadArtworksSuccess,
+  nextPage,
+  prevPage,
+} from './artwork.actions';
 
 const mockArtworks = [
   {
@@ -97,6 +103,41 @@ describe('ArtworskEffects', () => {
         artworksService.getArtworks.and.returnValue(response);
 
         expectObservable(effects.loadArtworks$).toBe('--b', { b: outcome });
+      });
+    });
+  });
+
+  describe('pageChange$', () => {
+    it('should handle nextPage and return loadArtworks action', () => {
+      const action = nextPage();
+      const outcome = loadArtworks();
+
+      testScheduler.run(({ hot, cold, expectObservable }) => {
+        actions = hot('-a', { a: action });
+
+        expectObservable(effects.pageChange$).toBe('-b', { b: outcome });
+      });
+    });
+
+    it('should handle prevPage and return loadArtworks action', () => {
+      const action = prevPage();
+      const outcome = loadArtworks();
+
+      testScheduler.run(({ hot, cold, expectObservable }) => {
+        actions = hot('-a', { a: action });
+
+        expectObservable(effects.pageChange$).toBe('-b', { b: outcome });
+      });
+    });
+
+    it('should handle goToPage and return loadArtworks action', () => {
+      const action = goToPage({ page: 2 });
+      const outcome = loadArtworks();
+
+      testScheduler.run(({ hot, cold, expectObservable }) => {
+        actions = hot('-a', { a: action });
+
+        expectObservable(effects.pageChange$).toBe('-b', { b: outcome });
       });
     });
   });
